@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\LeavesAdmin;
+use App\Models\Holiday;
 
 if (!function_exists('adminId')) {
     function adminId()
@@ -70,5 +72,29 @@ if (!function_exists('user_permission')) {
         } else {
             return true;
         }
+    }
+}
+
+if (!function_exists('totalLeave')) {
+    function totalLeave()
+    {
+        $totalLeave = LeavesAdmin::where('leaves_admins.user_id',auth()->user()->user_id)
+                    ->count();
+
+        return $totalLeave;
+    }
+}
+
+if (!function_exists('commingHoliday')) {
+    function commingHoliday()
+    {
+        $admin_id = adminId();
+        $holidays = Holiday::where('admin_id', $admin_id)
+        ->whereRaw("STR_TO_DATE(date_holiday, '%Y-%m-%d') >= CURDATE()")
+        ->orderByRaw("STR_TO_DATE(date_holiday, '%Y-%m-%d') ASC")
+        ->limit(5)
+        ->get();
+
+        return $holidays;
     }
 }

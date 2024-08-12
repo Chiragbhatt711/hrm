@@ -15,9 +15,11 @@
                             <li class="breadcrumb-item active">Holidays</li>
                         </ul>
                     </div>
-                    <div class="col-auto float-right ml-auto">
-                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_holiday"><i class="fa fa-plus"></i> Add Holiday</a>
-                    </div>
+                    @if(user_permission('Holidays','create'))
+                        <div class="col-auto float-right ml-auto">
+                            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_holiday"><i class="fa fa-plus"></i> Add Holiday</a>
+                        </div>
+                    @endif
                 </div>
             </div>
 			<!-- /Page Header -->
@@ -38,7 +40,9 @@
                                     <th>Title </th>
                                     <th>Holiday Date</th>
                                     <th>Day</th>
-                                    <th class="text-right">Action</th>
+                                    @if(user_permission('Holidays','edit') || user_permission('Holidays','delete'))
+                                        <th class="text-right">Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,15 +66,21 @@
                                             <td hidden class="holidayDate">{{$items->date_holiday }}</td>
                                             <td>{{date('d F, Y',strtotime($items->date_holiday)) }}</td>
                                             <td>{{date('l',strtotime($items->date_holiday)) }}</td>
-                                            <td class="text-right">
-                                                <div class="dropdown dropdown-action">
-                                                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item userUpdate" data-toggle="modal" data-id="'.$items->id.'" data-target="#edit_holiday"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_holiday"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                            @if(user_permission('Holidays','edit') || user_permission('Holidays','delete'))
+                                                <td class="text-right">
+                                                    <div class="dropdown dropdown-action">
+                                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            @if (user_permission('Holidays','edit'))
+                                                                <a class="dropdown-item userUpdate" data-toggle="modal" data-id="'.$items->id.'" data-target="#edit_holiday"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                            @endif
+                                                            @if (user_permission('Holidays','delete'))
+                                                                <a class="dropdown-item userDelete" href="#" data-toggle="modal" data-id="'.$items->id.'" data-target="#delete_holiday"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                            @endif
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endif
                                 @endforeach
@@ -160,7 +170,7 @@
                         <div class="modal-btn delete-action">
                             <div class="row">
                                 <div class="col-6">
-                                    <a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+                                    <a href="javascript:void(0);" id="holiday_delete" class="btn btn-primary continue-btn">Delete</a>
                                 </div>
                                 <div class="col-6">
                                     <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
@@ -172,7 +182,7 @@
             </div>
         </div>
         <!-- /Delete Holiday Modal -->
-       
+
     </div>
     <!-- /Page Wrapper -->
     @section('script')
@@ -186,7 +196,13 @@
             var _this = $(this).parents('tr');
             $('#e_id').val(_this.find('.id').text());
             $('#holidayName_edit').val(_this.find('.holidayName').text());
-            $('#holidayDate_edit').val(_this.find('.holidayDate').text());  
+            $('#holidayDate_edit').val(_this.find('.holidayDate').text());
+        });
+        $(document).on('click','.userDelete',function()
+        {
+            var _this = $(this).parents('tr');
+            var id = _this.find('.id').text();
+            $('#holiday_delete').attr('href','/form/holidays/delete/'+id)
         });
     </script>
     @endsection

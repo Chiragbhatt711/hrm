@@ -30,7 +30,7 @@ class HolidayController extends Controller
             $holiday = new Holiday;
             $holiday->admin_id = $admin_id;
             $holiday->name_holiday = $request->nameHoliday;
-            $holiday->date_holiday  = $request->holidayDate;
+            $holiday->date_holiday  = date('Y-m-d',strtotime($request->holidayDate));
             $holiday->save();
 
             DB::commit();
@@ -51,7 +51,7 @@ class HolidayController extends Controller
         try{
             $id           = $request->id;
             $holidayName  = $request->holidayName;
-            $holidayDate  = $request->holidayDate;
+            $holidayDate  = date('Y-m-d',strtotime($request->holidayDate));
 
             $update = [
 
@@ -69,6 +69,20 @@ class HolidayController extends Controller
         }catch(\Exception $e){
             DB::rollback();
             Toastr::error('Holiday update fail :)','Error');
+            return redirect()->back();
+        }
+    }
+
+    public function deleteRecord($id)
+    {
+        $admin_id = adminId();
+        $data = Holiday::findOrFail($id);
+        if($data->admin_id == $admin_id){
+            $data->delete();
+            Toastr::success('Holiday deleted successfully :)','Success');
+            return redirect()->back();
+        } else {
+            Toastr::error('Holiday delete fail :)','Error');
             return redirect()->back();
         }
     }

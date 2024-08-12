@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
@@ -28,7 +29,9 @@ class HomeController extends Controller
     public function index()
     {
         $admin_id = adminId();
-        return view('dashboard.dashboard');
+
+        $totalEmployee = Employee::where('admin_id',$admin_id)->count();
+        return view('dashboard.dashboard',compact('totalEmployee'));
     }
     // employee dashboard
     public function emDashboard()

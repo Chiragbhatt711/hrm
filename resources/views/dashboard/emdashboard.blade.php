@@ -17,10 +17,10 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-lg-8 col-md-8">
-                    <section class="dash-section">
+                    {{--  <section class="dash-section">
                         <h1 class="dash-sec-title">Today</h1>
                         <div class="dash-sec-content">
                             <div class="dash-info-list">
@@ -143,12 +143,25 @@
                                 </a>
                             </div>
                         </div>
+                    </section>  --}}
+                    @php
+                        $commingHoliday = commingHoliday()
+                    @endphp
+                    <section>
+                        <h5 class="dash-title">Upcoming Holiday</h5>
+                        @foreach ($commingHoliday as $single)
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h4 class="holiday-title mb-0">{{ $single->date_holiday.' - '.$single->name_holiday }}</h4>
+                                </div>
+                            </div>
+                        @endforeach
                     </section>
                 </div>
 
                 <div class="col-lg-4 col-md-4">
                     <div class="dash-sidebar">
-                        <section>
+                        {{--  <section>
                             <h5 class="dash-title">Projects</h5>
                             <div class="card">
                                 <div class="card-body">
@@ -170,14 +183,14 @@
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </section>  --}}
                         <section>
                             <h5 class="dash-title">Your Leave</h5>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="time-list">
                                         <div class="dash-stats-list">
-                                            <h4>4.5</h4>
+                                            <h4>{{ totalLeave() }}</h4>
                                             <p>Leave Taken</p>
                                         </div>
                                         <div class="dash-stats-list">
@@ -191,7 +204,7 @@
                                 </div>
                             </div>
                         </section>
-                        <section>
+                        {{--  <section>
                             <h5 class="dash-title">Your time off allowance</h5>
                             <div class="card">
                                 <div class="card-body">
@@ -210,20 +223,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                        <section>
-                            <h5 class="dash-title">Upcoming Holiday</h5>
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <h4 class="holiday-title mb-0">Mon 20 May 2019 - Ramzan</h4>
-                                </div>
-                            </div>
-                        </section>
+                        </section>  --}}
+
                     </div>
                 </div>
             </div>
         </div>
         <!-- /Page Content -->
     </div>
-    <!-- /Page Wrapper -->  
+    <!-- /Page Wrapper -->
 @endsection
