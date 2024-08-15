@@ -330,3 +330,27 @@ Route::controller(PersonalInformationController::class)->group(function () {
     Route::post('user/information/save', 'saveRecord')->middleware('auth')->name('user/information/save');
 });
 
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/', function () {
+        return redirect()->route('admin.login');
+    });
+    Route::controller(App\Http\Controllers\Admin\LoginController::class)->group(function () {
+        Route::get('/login','index')->name('login');
+        Route::post('login-check','login')->name('login_check');
+    });
+
+    Route::group(['middleware' => 'auth:admin'], function () {
+        Route::controller(App\Http\Controllers\Admin\HomeController::class)->group(function () {
+            Route::get('/dashboard','index')->name('dashboard');
+        });
+        Route::controller(App\Http\Controllers\Admin\LoginController::class)->group(function () {
+            Route::get('/logout','Admin\LoginController@logout')->name('logout');
+        });
+        Route::resource('license', App\Http\Controllers\Admin\LicenseKeyController::class);
+
+        Route::resource('plans', Admin\LicenseKeyController::class);
+        Route::get('manage-user/{id}','Admin\UserController@manageUser')->name('manage_user');
+        Route::get('create-user/{id}','Admin\UserController@createUser')->name('create_user');
+        Route::post('user-store/{id}','Admin\UserController@userStore')->name('user_store');
+    });
+});

@@ -178,6 +178,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Irfa\SerialNumber\SerialNumberGeneratorSeviceProvider::class,
+
     ],
 
     /*
@@ -193,6 +195,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
+        'SN' => Irfa\SerialNumber\Facades\SerialNumber::class,
     ])->toArray(),
 
 ];
