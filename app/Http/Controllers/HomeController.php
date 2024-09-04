@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\LicenseKey;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
@@ -50,5 +51,22 @@ class HomeController extends Controller
         $pdf = PDF::loadView('payroll.salaryview');
         // download pdf file
         return $pdf->download('pdfview.pdf');
+    }
+
+    public function licenseVerify(Request $request)
+    {
+        $key = $request->licenseKeyField;
+        $licenseData = LicenseKey::where('key',$key)->first();
+        if($licenseData){
+            if($licenseData->activate_date == ""){
+                $licenseData->update(['activate_date'=>Carbon::now()->toDateTimeString()]);
+            }
+            $userUpdate = User::find(auth()->user()->id);
+            $userUpdate->update(['license_key'=>$key]);
+
+            return response()->json(['success'=>'Licess activate successfully']);
+        } else {
+            return response()->json(['error'=>'Invalide license key']);
+        }
     }
 }

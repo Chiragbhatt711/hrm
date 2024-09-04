@@ -3,6 +3,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\LeavesAdmin;
 use App\Models\Holiday;
+use App\Models\User;
+use App\Models\LicenseKey;
+use Carbon\Carbon;
 
 if (!function_exists('adminId')) {
     function adminId()
@@ -96,5 +99,37 @@ if (!function_exists('commingHoliday')) {
         ->get();
 
         return $holidays;
+    }
+}
+
+if(!function_exists('checkLicenseActivate'))
+{
+    function checkLicenseActivate()
+    {
+        $adminId = adminId();
+        $isActivate=0;
+        if($adminId){
+            $admin = User::find($adminId);
+            $licenseKey = $admin->license_key;
+            if($licenseKey) {
+                $license = LicenseKey::where('key',$licenseKey)->first();
+                if($license) {
+                    $activateDate = Carbon::parse($license->activate_date);
+                    $currentDate = Carbon::now()->toDateTimeString();
+                    $diffInDays = $activateDate->diffInDays($currentDate);
+                    if($diffInDays <= $license->valid_day){
+                        $isActivate = 1;
+                    } else {
+                        $isActivate = 0;
+                    }
+                } else {
+                    $isActivate=0;
+                }
+            } else {
+                $isActivate=0;
+            }
+
+        }
+        return $isActivate;
     }
 }

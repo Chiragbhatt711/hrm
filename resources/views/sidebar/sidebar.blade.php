@@ -169,6 +169,18 @@
                         <li><a class="{{set_active(['profile_user'])}}" href="{{ route('profile_user') }}"> Employee Profile </a></li>
                     </ul>
                 </li>
+                @if (Auth::user()->role_name=='Admin')
+                    @if (!checkLicenseActivate())
+                        <li class="submenu">
+                            <a href="#"><i class="la la-user"></i>
+                                <span> License Activate </span> <span class="menu-arrow"></span>
+                            </a>
+                            <ul style="display: none;">
+                                <li><a data-bs-effect="effect-rotate-left"  data-toggle="modal" data-target="#modaldemo8" class="modal-effect side-menu__item">License Activate </a></li>
+                            </ul>
+                        </li>
+                    @endif
+                @endif
             </ul>
         </div>
     </div>
