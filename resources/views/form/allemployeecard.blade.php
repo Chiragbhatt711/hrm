@@ -1,7 +1,7 @@
 
 @extends('layouts.master')
 @section('content')
-   
+
     <!-- Page Wrapper -->
     <div class="page-wrapper">
         <!-- Page Content -->
@@ -17,7 +17,9 @@
                         </ul>
                     </div>
                     <div class="col-auto float-right ml-auto">
-                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_employee"><i class="fa fa-plus"></i> Add Employee</a>
+                        @if (checkLicenseActivate())
+                            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_employee"><i class="fa fa-plus"></i> Add Employee</a>
+                        @endif
                         <div class="view-icons">
                             <a href="{{ route('all/employee/card') }}" class="grid-view btn btn-link active"><i class="fa fa-th"></i></a>
                             <a href="{{ route('all/employee/list') }}" class="list-view btn btn-link"><i class="fa fa-bars"></i></a>
@@ -31,26 +33,26 @@
             <form action="{{ route('all/employee/search') }}" method="POST">
                 @csrf
                 <div class="row filter-row">
-                    <div class="col-sm-6 col-md-3">  
+                    <div class="col-sm-6 col-md-3">
                         <div class="form-group form-focus">
                             <input type="text" class="form-control floating" name="employee_id">
                             <label class="focus-label">Employee ID</label>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3">  
+                    <div class="col-sm-6 col-md-3">
                         <div class="form-group form-focus">
                             <input type="text" class="form-control floating" name="name">
                             <label class="focus-label">Employee Name</label>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3"> 
+                    <div class="col-sm-6 col-md-3">
                         <div class="form-group form-focus">
                             <input type="text" class="form-control floating" name="position">
                             <label class="focus-label">Position</label>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3">  
-                        <button type="sumit" class="btn btn-success btn-block"> Search </button>  
+                    <div class="col-sm-6 col-md-3">
+                        <button type="sumit" class="btn btn-success btn-block"> Search </button>
                     </div>
                 </div>
             </form>
@@ -105,7 +107,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Email <span class="text-danger">*</span></label>
@@ -129,7 +131,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">  
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="col-form-label">Employee ID <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="employee_id" name="employee_id" placeholder="Auto id employee" readonly>
@@ -208,7 +210,7 @@
             </div>
         </div>
         <!-- /Add Employee Modal -->
-        
+
     </div>
     <!-- /Page Wrapper -->
     @section('script')
@@ -269,7 +271,7 @@
             var statuss = (_this.find(".statuss").text());
             var _option = '<option selected value="' +statuss+ '">' + _this.find('.statuss').text() + '</option>'
             $( _option).appendTo("#e_status");
-            
+
         });
     </script>
     @endsection

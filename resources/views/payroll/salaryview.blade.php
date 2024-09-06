@@ -18,13 +18,13 @@
                     </div>
                     <div class="col-auto float-right ml-auto">
                         <div class="btn-group btn-group-sm">
-                            <button class="btn btn-white">CSV</button>
+                            {{--  <button class="btn btn-white">CSV</button>  --}}
                             <button class="btn btn-white"><a href=""@click.prevent="printme" target="_blank">PDF</a></button>
                             <button class="btn btn-white"><i class="fa fa-print fa-lg"></i><a href="" @click.prevent="printme" target="_blank"> Print</a></button>
                         </div>
                     </div>
                 </div>
-           
+
             <div class="row" style="margin-left: -240px;">
                 <div class="col-md-12">
                     <div class="card">
@@ -124,7 +124,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12" >
-                                    <p><strong>Net Salary: ${{ $users->salary }}</strong> (Fifty nine thousand six hundred and ninety eight only.)</p>
+                                    <p><strong>Net Salary: ${{ $users->salary }}</strong></p>
                                 </div>
                             </div>
                         </div>

@@ -17,13 +17,15 @@
                             <li class="breadcrumb-item active">Performance</li>
                         </ul>
                     </div>
-                    <div class="col-auto float-right ml-auto">
-                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_indicator"><i class="fa fa-plus"></i> Add New</a>
-                    </div>
+                    @if (checkLicenseActivate())
+                        <div class="col-auto float-right ml-auto">
+                            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_indicator"><i class="fa fa-plus"></i> Add New</a>
+                        </div>
+                    @endif
                 </div>
             </div>
             <!-- /Page Header -->
-            
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
@@ -121,7 +123,7 @@
                                         <select class="select" id="designation" name="designation">
                                             <option selected disabled>--Select Designation--</option>
                                             @foreach ($departments as $department )
-                                            <option value="{{ $department->department }}">{{ $department->department }}</option> 
+                                            <option value="{{ $department->department }}">{{ $department->department }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -263,7 +265,7 @@
             </div>
         </div>
         <!-- /Add Performance Indicator Modal -->
-        
+
         <!-- Edit Performance Indicator Modal -->
         <div id="edit_indicator" class="modal custom-modal fade" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -284,7 +286,7 @@
                                         <label class="col-form-label">Designation</label>
                                         <select class="select" id="e_designation" name="designation">
                                             @foreach ($departments as $department )
-                                            <option value="{{ $department->department }}">{{ $department->department }}</option> 
+                                            <option value="{{ $department->department }}">{{ $department->department }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -426,7 +428,7 @@
             </div>
         </div>
         <!-- /Edit Performance Indicator Modal -->
-        
+
         <!-- Delete Performance Indicator Modal -->
         <div class="modal custom-modal fade" id="delete_indicator" role="dialog">
             <div class="modal-dialog modal-dialog-centered">
@@ -464,7 +466,7 @@
         {
             var _this = $(this).parents('tr');
             $('#e_id').val(_this.find('.id').text());
-        
+
             var designation = (_this.find(".designation").text());
             var _option = '<option selected value="' + designation + '">' + _this.find('.designation').text() + '</option>'
             $( _option).appendTo("#e_designation");
