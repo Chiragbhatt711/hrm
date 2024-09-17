@@ -36,9 +36,9 @@
                     <div class="nav-top-contact">
                         <!-- Social links -->
                         <ul class="list-inline text-center text-md-left mb-0">
-                            <li class="list-inline-item mx-2"><i class="fa fa-phone"></i> +91 995-880-9993</li>
+                            <li class="list-inline-item mx-2"><i class="fa fa-phone"></i> +91 7984322008</li>
                             <li class="list-inline-item mx-2"><i class="fa fa-envelope" aria-hidden="true"></i>
-                                info@hrhubservices.com</li>
+                                contactus@rudratechnovation.com</li>
                         </ul>
                     </div>
                 </div>
