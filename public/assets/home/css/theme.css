@@ -1,16 +1,16 @@
-/*  
+/*
 Author: WebThemez.com
-License: https://webthemez.com/license 
+License: https://webthemez.com/license
 */
-/*------------------- 
+/*-------------------
 # General
 ---------------------*/
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Arvo&display=swap'); 
+@import url('https://fonts.googleapis.com/css?family=Arvo&display=swap');
 
-h1, h2{ 
-	font-family: 'Arvo', serif; 
+h1, h2{
+	font-family: 'Arvo', serif;
 	font-weight:bolder;
 }
 
@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #007bff;
   background-color: #fff;
 }
- 
+
 header.main-header {
     background: #e9ecef;
     float: left;
@@ -111,6 +111,7 @@ header.main-header {
 	margin-bottom: -1px;
 }
 .mainNav ul li a{
+    z-index:1;
 	color: #545454;
 	display: block;
 	font-size: 16px;
@@ -135,7 +136,7 @@ header.main-header {
     font-weight: normal;
     background: none;
 }
-.menu-toggle{ 
+.menu-toggle{
 	background: none;
 	float:right;
 	    margin: 15px 0;
@@ -242,9 +243,9 @@ header.main-header {
   z-index: 3;
 }
 img.wt-block-image {
-    -o-object-fit: cover;  
+    -o-object-fit: cover;
     object-fit: cover;
-} 
+}
 .wt-block-image:not([class*=absolute]) {
     position: absolute;
 }
@@ -665,12 +666,12 @@ footer a{
 }
 p.help-block,
 p.help-block ul{
-    float: left; 
+    float: left;
     margin: 0;
     padding: 0;
 }
 p.help-block li {
-    float: left; 
+    float: left;
     margin: 0px 0 10px 0;
 	font-style:italic;
 	font-size:13px;
@@ -1124,7 +1125,7 @@ ul.price-options li{
     color: #211f1f !important;
 }
 .navbar-brand b{
-	font-family: 'Arvo', serif; 
+	font-family: 'Arvo', serif;
 	     font-size: 24px;
 }
 .navbar-bg-onscroll .navbar-brand b{
@@ -1152,7 +1153,7 @@ ul.price-options li{
 .portfolio-item{
 	/*width:100%;*/
 }
-.portfolio-item .item{ 
+.portfolio-item .item{
 	float:left;
 	/* margin-bottom:10px; */
 }
@@ -1223,7 +1224,7 @@ ul.price-options li{
   transition: all .2s ease;
 }
 
-.wt-portfolio__item:hover .wt-portfolio__image { 
+.wt-portfolio__item:hover .wt-portfolio__image {
   background-size:120%;
 }
 
@@ -1484,7 +1485,7 @@ ul.price-options li{
 .wt-ls-xs-sm {
   letter-spacing: 2px;
 }
- 
+
 .wt-opacity-1 {
   opacity: .1;
 }
@@ -1501,12 +1502,12 @@ color: #fff !important;
 .inner-page .navbar-brand b {
     color: #fff!important;
 }
- 
+
 .toggler-icon{
 	height:10px;
 	background:007bff;
 }
-.navbar a{ 
+.navbar a{
      color: #211f1f !important;
 }
 .inner-page .navbar-bg-onscroll .nav-link{
@@ -1599,8 +1600,8 @@ Blog
     font-style: italic;
     color: #a9a9a9;
     font-size: 14px;
-} 
-li.nav-item.active > a { 
+}
+li.nav-item.active > a {
 	border-bottom: 2px solid #00000061 !important;
 }
 @media (min-width: 992px) {
@@ -1617,13 +1618,13 @@ li.nav-item.active > a {
 ------------------------------------*/
 @media (max-width: 767px) {
   .navbar-expand-sm.fixed-top {
-    background-color: rgba(27, 30, 36, 0.3); 
+    background-color: rgba(27, 30, 36, 0.3);
   }
 }
 
 @media (max-width: 991px) {
   .navbar-expand-md.fixed-top {
-    background-color: rgba(27, 30, 36, 0.3); 
+    background-color: rgba(27, 30, 36, 0.3);
   }
   .onCollapse{
 	  background:#fff;
@@ -1638,9 +1639,9 @@ li.nav-item.active > a {
   .navbar-expand-lg.fixed-top {
     /* background-color: rgba(27, 30, 36, 0.3); */
   }
-} 
+}
 
-@media only screen and (min-width: 992px) and (max-width: 1200px){ 
+@media only screen and (min-width: 992px) and (max-width: 1200px){
 .mainmenu ul {
   margin-left: -50px;
 }
@@ -1658,6 +1659,6 @@ li.nav-item.active > a {
     .mainmenu ul{
         text-align: center
     }
-  
+
 
 }
