@@ -103,7 +103,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="contact.html">
+                        <a href="http://rudratechnovation.com/">
                             <span class="title">Contact Us</span>
                         </a>
                     </li>
@@ -324,7 +324,7 @@
 
                                         <div class="discount">
                                             ₹1000.0 </div>
-                                        ₹700.0<span>/ 1 Months </span>
+                                        ₹500.0<span>/ 1 Months </span>
                                     </div>
                                 </div>
                                 <div class="pp-plans-list">
