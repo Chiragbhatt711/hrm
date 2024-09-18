@@ -336,7 +336,7 @@
                                         <li><i class="fa-solid fa-check"></i>    Payroll managment</li>
                                         <li><i class="fa-solid fa-check"></i>    Employee salary</li>
                                         {{--  <li><i class="lni lni-close"></i> Human Resource</li>  --}}
-                                        <li><i class="fa-solid fa-check"></i>    Epmloyee Performance</li>
+                                        <li><i class="fa-solid fa-check"></i>    Employee Performance</li>
                                     </ul>
                                 </div>
                             </div>
@@ -373,7 +373,7 @@
                                         <li><i class="fa-solid fa-check"></i>    Payroll managment</li>
                                         <li><i class="fa-solid fa-check"></i>    Employee salary</li>
                                         {{--  <li><i class="lni lni-close"></i> Human Resource</li>  --}}
-                                        <li><i class="fa-solid fa-check"></i>    Epmloyee Performance</li>
+                                        <li><i class="fa-solid fa-check"></i>    Employee Performance</li>
                                     </ul>
                                 </div>
                             </div>
@@ -410,7 +410,7 @@
                                         <li><i class="fa-solid fa-check"></i>    Payroll managment</li>
                                         <li><i class="fa-solid fa-check"></i>    Employee salary</li>
                                         {{--  <li><i class="lni lni-close"></i> Human Resource</li>  --}}
-                                        <li><i class="fa-solid fa-check"></i>    Epmloyee Performance</li>
+                                        <li><i class="fa-solid fa-check"></i>    Employee Performance</li>
                                     </ul>
                                 </div>
                             </div>
