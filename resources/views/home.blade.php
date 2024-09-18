@@ -85,26 +85,31 @@
                 <!-- Responsive Menu Structure-->
                 <!--Note: declare the Menu style in the data-menu-style="horizontal" (options: horizontal, vertical, accordion) -->
                 <ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal">
-                    <li>
+                    <li class="nav-item">
                         <a href="index.html" class="active">
                             <span class="title">Home</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item">
                         <a href="#services">
                             <span class="title">Services</span>
                         </a>
                     </li>
 
-                    <li>
-                        <a href="#price">
+                    <li class="nav-item">
+                        <a href="#pricing">
                             <span class="title">Price</span>
                         </a>
                     </li>
 
-                    <li class="last ">
+                    <li class="nav-item">
                         <a href="contact.html">
                             <span class="title">Contact Us</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('login') }}">
+                            <span class="title">Login</span>
                         </a>
                     </li>
                 </ul>
